@@ -2,7 +2,44 @@ POST http://localhost:5292/adicionar
 Content-Type: application/json
 
 {
+    "Id": 23,
     "Nome": "Teste",
     "Preco": 5.6,
     "Categoria": "teste01"
   }
+
+###
+
+POST http://localhost:5292/adicionar
+Content-Type: application/json
+
+{
+    "Id": 13,
+    "Nome": "TesteBusca",
+    "Preco": 54.6,
+    "Categoria": "teste061"
+  }
+
+###
+
+DELETE http://localhost:5292/remover/23
+
+###
+
+PUT http://localhost:5292/atualizar
+Content-Type: application/json
+
+{
+    "Id": 23,
+    "Nome": "TesteAtt",
+    "Preco": 15.6,
+    "Categoria": "teste02"
+  }
+
+###
+
+GET http://localhost:5292/listaprodutos
+
+###
+
+GET http://localhost:5292/buscaproduto/13
