@@ -3,41 +3,64 @@ Restaurante Senac = new Restaurante();
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
 app.MapPost("/adicionar", AdicionarProduto);
 app.MapDelete("/remover/{id}", RemoverProduto);
 app.MapPut("/atualizar", AtualizarProduto);
 app.MapGet("/listaprodutos", ListaProdutos);
-app.MapGet("/buscaproduto/{id}", BuscaProduto);
+app.MapGet("/buscarproduto/{id}", BuscarProduto);
 
 app.Run();
 
 IResult AdicionarProduto (Produto produto){
-    var add = Senac.AdicionarProduto(produto);
-    return TypedResults.Created("/adicionar", add);
+    DataBase dataBase = new DataBase();
+    var add = dataBase.AdicionarProduto(produto);
+    
+    if(add > 0){
+        return TypedResults.Created("/adicionar", add);
+    }else{
+        return TypedResults.BadRequest();
+    }
 }
 
 IResult RemoverProduto (int id){
-    Senac.RemoverProduto(id);
-    return TypedResults.Ok();
+    DataBase dataBase = new DataBase();
+    var delete = dataBase.RemoverProduto(id);
+    
+    if(delete > 0){
+        return TypedResults.Ok();
+    }
+    if(delete == 0){
+        return TypedResults.NotFound();
+    }else{
+        return TypedResults.BadRequest();
+    }
 }
 
 IResult AtualizarProduto (Produto produto){
-    var att = Senac.AtualizarProduto(produto);
-    if (att == null){
+    DataBase dataBase = new DataBase();
+    var update = dataBase.AtualizarProduto(produto);
+
+    if(update > 0){
+        return TypedResults.Ok();
+    }
+    if(update == 0){
         return TypedResults.NotFound();
-    } else {
-        return TypedResults.Ok(att);
+    }else{
+        return TypedResults.BadRequest();
     }
 }
 
 IResult ListaProdutos (){
-    var lista = Senac.ListarProdutos();
-    return TypedResults.Ok(lista);
+    DataBase dataBase = new DataBase();
+    var produtos = dataBase.ListaProdutos();
+    
+    return TypedResults.Ok(produtos);
 }
 
-IResult BuscaProduto (int id){
-    var produto = Senac.BuscaProduto(id);
+IResult BuscarProduto (int id){
+     DataBase dataBase = new DataBase();
+    var produto = dataBase.BuscarProduto(id);
+
     if (produto == null){
         return TypedResults.NotFound();
     }else{

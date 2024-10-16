@@ -2,7 +2,6 @@ POST http://localhost:5292/adicionar
 Content-Type: application/json
 
 {
-    "Id": 23,
     "Nome": "Teste",
     "Preco": 5.6,
     "Categoria": "teste01"
@@ -22,7 +21,7 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:5292/remover/23
+DELETE http://localhost:5292/remover/11
 
 ###
 
@@ -30,7 +29,7 @@ PUT http://localhost:5292/atualizar
 Content-Type: application/json
 
 {
-    "Id": 23,
+    "Id": 12,
     "Nome": "TesteAtt",
     "Preco": 15.6,
     "Categoria": "teste02"
@@ -42,4 +41,4 @@ GET http://localhost:5292/listaprodutos
 
 ###
 
-GET http://localhost:5292/buscaproduto/13
+GET http://localhost:5292/buscarproduto/12
