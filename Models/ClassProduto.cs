@@ -1,18 +1,18 @@
 class Produto{
     public int Id { get; set; }
     public string Nome { get; set; }
-    public double Preco { get; set; }
+    public double Valor { get; set; }
     public string Categoria { get; set; }
 
-    public Produto (int id, string nome, double preco, string categoria){
+    public Produto (int id, string nome, double valor, string categoria){
         Id = id;
         Nome = nome;
-        Preco = preco;
+        Valor = valor;
         Categoria = categoria;
     }
     public Produto (string nome, double preco, string categoria){
         Nome = nome;
-        Preco = preco;
+        Valor = preco;
         Categoria = categoria;
     }
     public Produto (){

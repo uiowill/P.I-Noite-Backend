@@ -32,7 +32,7 @@ public Produto AtualizarProduto (Produto produto){
         if (produtos[i].Id == produto.Id){
             produtos[i].Nome = produto.Nome;
             produtos[i].Categoria = produto.Categoria;
-            produtos[i].Preco = produto.Preco;
+            produtos[i].Valor = produto.Valor;
             produtoAtualizado = produtos[i];
             return produtoAtualizado;
         }

@@ -6,7 +6,7 @@ class DataBase{
     string stringConexao = "server=localhost; uid=root; pwd=1234; database=Mysql";
 
     public int AdicionarProduto(Produto produto){
-        var preco = produto.Preco.ToString(new NumberFormatInfo(){NumberDecimalSeparator = "."});
+        var preco = produto.Valor.ToString(new NumberFormatInfo(){NumberDecimalSeparator = "."});
         MySqlConnection conexao;
         string querry = $"INSERT INTO cardapiosenac.produtos(nome, valor, categoria) VALUE('{produto.Nome}', {preco}, '{produto.Categoria}');";
 
@@ -46,7 +46,7 @@ class DataBase{
 }
 
     public int AtualizarProduto(Produto produto){
-        var preco = produto.Preco.ToString(new NumberFormatInfo(){NumberDecimalSeparator = "."});
+        var preco = produto.Valor.ToString(new NumberFormatInfo(){NumberDecimalSeparator = "."});
         MySqlConnection conexao;
         string querry = $"UPDATE cardapiosenac.produtos SET  nome = '{produto.Nome}', valor = {preco}, categoria = '{produto.Categoria}' WHERE id = {produto.Id};";
 
